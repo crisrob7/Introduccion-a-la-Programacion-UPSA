@@ -2,34 +2,45 @@
 #include <iostream>
 #include "conio.h"
 using namespace std;
-float mcd(int a, int b);
+float mcd(int a, int b);  //Prototipo de la funcion
+
+
 void main()
-{int m,a,b;
-cout<<"Ingrese a, respectivamente b: "<<endl;
-cin>>a>>b;
-m=mcd(a,b);
-cout<<"el resultado es: "<<m;
-getch();
+{  
+	int m,a,b;
+   cout<<"Ingrese a, respectivamente b: "<<endl;
+   cin>>a>>b;
+
+   m=mcd(a,b);  //llamada de funcion
+
+   cout<<"el resultado es: "<<m;
+  
+   getch();
 }
+
+
+//Declaracion de funcion
+
 float mcd(int a, int b)
-{int m,n,c=2,s=1;
-if(a<b)
-{
-n=a;
-m=b;
-}
-else {
-n=b;
-m=a;
-}
+{  int m,n,c=2,s=1;
+   if(a<b)
+      {
+         n=a;
+         m=b;
+      }
+   else {
+         n=b;
+         m=a;
+        }
 do{
-if(n%c==0 && m%c==0)
-{
-s=s*c;
-m=m/c;
-n=n/c;
+   if(n%c==0 && m%c==0)
+      {
+         s=s*c;  //acumulador de producto de los que dividen exactamente
+         m=m/c;
+         n=n/c;
+      }
+   else{c++;}  //contador para buscar los divisores 
+   }
+   while(c<=n);  //Se repite hasta que el divisor sea mayor que el menor de los dos numeros
+   return s; //devuelve el acumulador
 }
-else{c++;}
-}
-while(c<=n);
-return s;
